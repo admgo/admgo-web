@@ -29,7 +29,17 @@ async function onSubmit(event: Event) {
           </Label>
           <Input
               id="email"
-              placeholder="name@example.com"
+              placeholder="用户名"
+              type="text"
+              auto-capitalize="none"
+              auto-complete="email"
+              auto-correct="off"
+              :disabled="isLoading"
+          />
+          <Input
+              class="my-2"
+              id="email"
+              placeholder="密码"
               type="email"
               auto-capitalize="none"
               auto-complete="email"
@@ -39,7 +49,7 @@ async function onSubmit(event: Event) {
         </div>
         <Button :disabled="isLoading">
           <LucideSpinner v-if="isLoading" class="mr-2 h-4 w-4 animate-spin" />
-          Sign In with Email
+          登录
         </Button>
       </div>
     </form>
@@ -49,14 +59,14 @@ async function onSubmit(event: Event) {
       </div>
       <div class="relative flex justify-center text-xs uppercase">
         <span class="bg-background px-2 text-muted-foreground">
-          Or continue with
+          或使用
         </span>
       </div>
     </div>
     <Button variant="outline" type="button" :disabled="isLoading">
       <LucideSpinner v-if="isLoading" class="mr-2 h-4 w-4 animate-spin" />
       <GitHubLogo v-else class="mr-2 h-4 w-4" />
-      GitHub
+      LDAP
     </Button>
   </div>
 </template>
