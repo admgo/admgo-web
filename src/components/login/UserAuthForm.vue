@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-// import LucideSpinner from '~icons/lucide/loader-2'
+import { RefreshCw } from 'lucide-vue-next';
 // import GitHubLogo from '~icons/radix-icons/github-logo'
 
 import { cn } from '@/lib/utils'
@@ -48,7 +48,7 @@ async function onSubmit(event: Event) {
           />
         </div>
         <Button :disabled="isLoading">
-          <LucideSpinner v-if="isLoading" class="mr-2 h-4 w-4 animate-spin" />
+          <RefreshCw v-if="isLoading" class="mr-2 h-4 w-4 animate-spin" />
           登录
         </Button>
       </div>
