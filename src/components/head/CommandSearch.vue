@@ -45,7 +45,7 @@ function handleOpenChange() {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger><Input type="email" placeholder="搜索" @click="handleOpenChange"/></TooltipTrigger>
-        <TooltipContent align="center" align-offset="100" side="bottom">
+        <TooltipContent align="center" side="bottom">
           <p>输入/进行搜索</p>
         </TooltipContent>
       </Tooltip>
