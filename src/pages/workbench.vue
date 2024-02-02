@@ -5,7 +5,7 @@ import { Menu } from "@/components/menu"
 </script>
 
 <template>
-  <div class="bg-gray-100 dark:bg-gray-900 flex flex-col h-screen">
+  <div class="bg-gray-100 dark:bg-gray-900 flex-col flex h-screen">
 <!--    头部-->
     <div class="h-14">
       <Header></Header>
@@ -14,11 +14,11 @@ import { Menu } from "@/components/menu"
     <div class="flex-grow overflow-auto">
       <div class="flex-row flex h-full">
 <!--        菜单-->
-        <div class="w-48 bg-background max-lg:hidden h-full">
+        <div class="w-48 bg-background max-lg:hidden h-full overflow-auto">
           <Menu></Menu>
         </div>
 <!--        主体-->
-        <div class="flex-grow h-full">
+        <div class="flex-grow h-full bg-amber-600">
           body
         </div>
       </div>
