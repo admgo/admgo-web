@@ -28,10 +28,14 @@ module.exports = {
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
+          background: 'hsl(var(--primary-background))',
+          'text-color': 'hsl(var(--primary-text-color))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
+          background: 'hsl(var(--secondary-background))',
+          'text-color': 'hsl(var(--secondary-text-color))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
