@@ -1,7 +1,9 @@
 <script setup lang="ts">
 // import { useRoute } from 'vitepress'
-import {cn} from '@/lib/utils'
-import {Button} from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import Header from './header/Header.vue'
+import Footer from './footer/Footer.vue'
+import { Button } from '@/components/ui/button'
 import {
   Tooltip,
   TooltipContent,
@@ -111,51 +113,66 @@ const sidebarNavItems: Item[] = [
 <template>
   <div class="h-full">
     <div class="flex-col h-full flex">
-      <!--    菜单标题-->
-      <div class="h-24">
-        hello
+      <!--    Menu Header-->
+      <div class="h-16">
+        <Header class="w-full"></Header>
       </div>
-      <!--    菜单主体-->
+      <!--    Menu Body-->
       <div class="flex-auto overflow-auto">
-        <div class="overflow-auto">
-          <nav class="w-full flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1 h-full">
-            <div class="h-full  overflow-auto">
-              <div class="bg-amber-700 ">
-                <Button
-                    v-for="item in sidebarNavItems"
-                    :key="item.title"
+        <div class="mx-2">
+          <nav
+            class="w-full flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1 h-full"
+          >
+            <div class="h-full">
+              <div>
+                <div
+                  class="my-1"
+                  v-for="item in sidebarNavItems"
+                  :key="item.title"
+                >
+                  <Button
                     as="a"
                     :href="item.href"
                     variant="ghost"
-                    :class="cn(
-              'w-full text-left justify-start',
-              // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
-            )"
-                >
-                  {{ item.title }}
-                </Button>
-                <TooltipProvider :delayDuration=7>
+                    :class="
+                      cn(
+                        'w-full text-left justify-start',
+                        // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
+                      )
+                    "
+                  >
+                    {{ item.title }}
+                  </Button>
+                </div>
+                <TooltipProvider :delayDuration="7">
                   <Tooltip>
                     <TooltipTrigger as-child>
-                      <Button variant="ghost" :class="cn(
-              'w-full text-left justify-start',
-              // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
-            )">
+                      <Button
+                        variant="ghost"
+                        :class="
+                          cn(
+                            'w-full text-left justify-start',
+                            // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
+                          )
+                        "
+                      >
                         Hover
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent class="bg-background border-2" side="right">
                       <div class="w-44 text-black dark:text-white">
                         <Button
-                            v-for="item in sidebarNavItems"
-                            :key="item.title"
-                            as="a"
-                            :href="item.href"
-                            variant="ghost"
-                            :class="cn(
-              'w-full text-left justify-start',
-              // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
-                )"
+                          v-for="item in sidebarNavItems"
+                          :key="item.title"
+                          as="a"
+                          :href="item.href"
+                          variant="ghost"
+                          :class="
+                            cn(
+                              'w-full text-left justify-start',
+                              // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
+                            )
+                          "
                         >
                           {{ item.title }}
                         </Button>
@@ -168,9 +185,9 @@ const sidebarNavItems: Item[] = [
           </nav>
         </div>
       </div>
-      <!--    菜单脚注-->
-      <div class="h-24">
-        helloada
+      <!--    Menu Footer-->
+      <div class="h-[52px]">
+        <Footer></Footer>
       </div>
     </div>
   </div>
