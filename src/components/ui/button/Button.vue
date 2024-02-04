@@ -24,6 +24,7 @@ withDefaults(defineProps<Props>(), {
     :as="as"
     :as-child="asChild"
     :class="cn(buttonVariants({ variant, size }), $attrs.class ?? '')"
+    class="text-secondary-text-color"
   >
     <slot />
   </Primitive>
