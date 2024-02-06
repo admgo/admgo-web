@@ -48,6 +48,11 @@ module.exports = {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
+          'text-color': 'hsl(var(--accent-text-color))',
+        },
+        active: {
+          DEFAULT: 'hsl(var(--active))',
+          'text-color': 'hsl(var(--active-text-color))',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',

@@ -32,6 +32,11 @@
     /*hover的颜色*/
     --accent: 228, 9%, 89%;
     --accent-foreground: 222.2 47.4% 11.2%;
+    --accent-text-color: 223, 7%, 21%;
+
+    /*active的颜色*/
+    --active: 216, 7%, 86%;
+    --active-text-color: 223, 7%, 21%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
