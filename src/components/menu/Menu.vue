@@ -114,7 +114,7 @@ const sidebarNavItems: Item[] = [
   <div class="h-full">
     <div class="flex-col h-full flex">
       <!--    Menu Header-->
-      <div class="h-16">
+      <div class="h-[172px]">
         <Header class="w-full"></Header>
       </div>
       <!--    Menu Body-->
