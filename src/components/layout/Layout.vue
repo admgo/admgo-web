@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Menu } from '@/components/menu'
-// document.documentElement.classList.add('dark')
 </script>
 
 <template>
@@ -12,8 +11,12 @@ import { Menu } from '@/components/menu'
           <Menu></Menu>
         </div>
         <!--        主体-->
-        <div class="flex-grow h-full bg-primary-background">body</div>
+        <div class="flex-grow h-full bg-primary-background">
+          <router-view></router-view>
+        </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped></style>
