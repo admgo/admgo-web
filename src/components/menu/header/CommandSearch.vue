@@ -18,6 +18,8 @@ import {
 import { Input } from '@/components/ui/input'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import Command from '../../ui/command/Command.vue'
+import { Settings } from 'lucide-vue-next'
+import { Button } from '@/components/ui/button'
 
 const open = ref(false)
 
@@ -40,11 +42,24 @@ function handleOpenChange() {
   <div>
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger
-          ><Input type="email" placeholder="搜索" @click="handleOpenChange"
-        /></TooltipTrigger>
+        <TooltipTrigger class="h-full w-full">
+          <Button
+            variant="ghost"
+            @click="handleOpenChange"
+            class="bg-primary-background h-full w-full"
+          >
+            <p class="text-sm text-muted-foreground">搜索或转到...</p>
+          </Button>
+        </TooltipTrigger>
         <TooltipContent align="center" side="bottom">
-          <p>输入/进行搜索</p>
+          <p>
+            输入
+            <kbd
+              class="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100"
+            >
+              <span class="text-xs">/</span></kbd
+            >进行搜索
+          </p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
