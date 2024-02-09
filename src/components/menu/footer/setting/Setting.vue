@@ -49,7 +49,7 @@ const tabValue = defineModel('account')
 </script>
 
 <template>
-  <Dialog aria-disabled="true">
+  <Dialog>
     <DialogTrigger>
       <Button variant="ghost">
         <Settings class="w-4 h-4"></Settings>
@@ -66,12 +66,13 @@ const tabValue = defineModel('account')
             <TabsList
               class="py-16 px-3 flex-col h-screen w-[218px] justify-start items-start float-right bg-secondary-background overflow-auto"
             >
-              <div v-for="g in settingList" class="w-full">
+              <div v-for="g in settingList" :key="g.value" class="w-full">
                 <h1 class="ml-3 text-xs my-2 font-semibold">{{ g.name }}</h1>
                 <TabsTrigger
+                  v-for="s in g.child"
+                  :key="s.value"
                   :value="s.value"
                   class="font-semibold w-full my-0.5 h-8 leading-6"
-                  v-for="s in g.child"
                 >
                   {{ s.name }}
                 </TabsTrigger>
@@ -82,9 +83,9 @@ const tabValue = defineModel('account')
           <div class="flex-grow flex-shrink w-[800px]">
             <div v-for="g in settingList" :key="g.value">
               <TabsContent
-                :value="s.value"
                 v-for="s in g.child"
                 :key="s.value"
+                :value="s.value"
                 class="m-0 p-0 h-screen w-full overflow-auto"
               >
                 <div class="flex flex-row h-full overflow-auto">
@@ -100,7 +101,6 @@ const tabValue = defineModel('account')
       </Tabs>
       <DialogClose
         class="text-secondary-text-color hover:bg-accent absolute top-[40px] right-[90px] inline-flex h-[40px] w-[40px] appearance-none items-center justify-center rounded-full"
-        aria-label="Close"
       >
         <div>
           <XCircle class="w-[40px] h-[40px]"></XCircle>
