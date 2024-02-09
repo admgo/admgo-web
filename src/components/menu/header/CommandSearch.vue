@@ -44,9 +44,9 @@ function handleOpenChange() {
       <Tooltip>
         <TooltipTrigger class="h-full w-full">
           <Button
+            class="bg-primary-background h-full w-full"
             variant="ghost"
             @click="handleOpenChange"
-            class="bg-primary-background h-full w-full"
           >
             <p class="text-sm text-muted-foreground">搜索或转到...</p>
           </Button>
