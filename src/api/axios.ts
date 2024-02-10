@@ -4,7 +4,7 @@ import { AxiosRequestConfig } from 'axios'
 const axios = createAxiosByInterceptors({
   baseURL:
     import.meta.env.VITE_PROTOCOL +
-    ':' +
+    '://' +
     import.meta.env.VITE_DOMAIN +
     import.meta.env.VITE_BASE_URL,
 })
