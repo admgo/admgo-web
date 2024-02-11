@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/tooltip'
 import { Separator } from '@/components/ui/separator'
 import { ChevronRight, AppWindow } from 'lucide-vue-next'
+import { router } from '@/router'
 interface Item {
   name: string
   value: string
@@ -20,6 +21,9 @@ const props = defineProps<{
   items: Item[]
   title: string
 }>()
+const push = (herf: any) => {
+  router.push(herf)
+}
 </script>
 
 <template>
@@ -51,7 +55,7 @@ const props = defineProps<{
                 <Button
                   v-if="child.sub == undefined"
                   as="a"
-                  :href="child.href"
+                  @click="push(child.href)"
                   variant="ghost"
                   :class="
                     cn(
@@ -102,7 +106,7 @@ const props = defineProps<{
                           v-for="s in child.sub"
                           :key="s.value"
                           as="a"
-                          :href="s.href"
+                          @click="push(s.href)"
                           variant="ghost"
                           :class="
                             cn(
@@ -136,7 +140,7 @@ const props = defineProps<{
               <Button
                 v-if="item.sub == undefined"
                 as="a"
-                :href="item.href"
+                @click="push(item.href)"
                 variant="ghost"
                 :class="
                   cn(
@@ -184,7 +188,7 @@ const props = defineProps<{
                         v-for="s in item.sub"
                         :key="s.value"
                         as="a"
-                        :href="s.href"
+                        @click="push(s.href)"
                         variant="ghost"
                         :class="
                           cn(
