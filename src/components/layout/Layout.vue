@@ -8,7 +8,7 @@ import { Menu } from '@/components/menu'
       <div class="flex-row flex h-full">
         <!--        菜单-->
         <div class="w-48 bg-secondary-background h-full overflow-auto">
-          <Menu></Menu>
+          <Menu />
         </div>
         <!--        主体-->
         <div class="flex-grow h-full bg-primary-background">
