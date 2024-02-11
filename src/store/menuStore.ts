@@ -1,12 +1,23 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { reactive } from 'vue'
 
+interface Item {
+  name: string
+  value: string
+  href?: string
+  sub?: Item[]
+  child?: Item[]
+}
 export const useMenuStore = defineStore('menu', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
+  let menu: Item[] = reactive([
+    {
+      name: '',
+      value: '',
+    },
+  ])
+  function changeMenu(newMenu: Item[]) {
+    menu = newMenu
   }
 
-  return { count, doubleCount, increment }
+  return { menu, changeMenu }
 })
