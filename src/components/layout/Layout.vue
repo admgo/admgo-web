@@ -12,7 +12,7 @@ import { Menu } from '@/components/menu'
         </div>
         <!--        主体-->
         <div class="flex-grow h-full bg-primary-background">
-          <router-view></router-view>
+          <router-view />
         </div>
       </div>
     </div>
