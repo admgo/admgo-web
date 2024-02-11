@@ -13,12 +13,12 @@ export function get(api: string, c: AxiosRequestConfig) {
   return axios.get(api, c)
 }
 
-export function post(api: string, c: AxiosRequestConfig) {
-  return axios.post(api, c)
+export function post(api: string, data: any, c: AxiosRequestConfig) {
+  return axios.post(api, data, c)
 }
 
-export function put(api: string, c: AxiosRequestConfig) {
-  return axios.put(api, c)
+export function put(api: string, data: any, c: AxiosRequestConfig) {
+  return axios.put(api, data, c)
 }
 
 export function del(api: string, c: AxiosRequestConfig) {

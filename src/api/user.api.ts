@@ -7,7 +7,7 @@ interface loginPostReq {
 }
 
 export const login = {
-  post: (data: loginPostReq) => post('/v1/user/login', { data: data }),
+  post: (data: loginPostReq) => post('/v1/user/login', data, {}),
 }
 
 // Logout
