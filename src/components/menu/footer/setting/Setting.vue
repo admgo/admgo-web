@@ -10,7 +10,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Separator } from '@/components/ui/separator'
 import { Button } from '@/components/ui/button'
-import { Settings, XCircle } from 'lucide-vue-next'
+import { Settings, XCircle, LogOut } from 'lucide-vue-next'
 import { reactive, shallowRef } from 'vue'
 import Account from './Account.vue'
 import Profile from './Profile.vue'
@@ -72,6 +72,7 @@ const tabValue = defineModel('account')
             <TabsList
               class="py-16 px-3 flex-col h-screen w-[218px] justify-start items-start float-right bg-secondary-background overflow-auto"
             >
+              <!--              标签触发器列表-->
               <div v-for="g in settingList" :key="g.value" class="w-full">
                 <h1 class="ml-3 text-xs my-2 font-semibold">{{ g.name }}</h1>
                 <TabsTrigger
@@ -84,6 +85,21 @@ const tabValue = defineModel('account')
                 </TabsTrigger>
                 <Separator class="my-4" />
               </div>
+              <!--              注销-->
+              <div class="w-full">
+                <Button
+                  variant="outline"
+                  class="font-semibold w-full my-0.5 h-8 leading-6"
+                >
+                  注销
+                  <LogOut class="w-4 h-4 ml-2"></LogOut>
+                </Button>
+                <Separator class="my-4" />
+              </div>
+              <!--              脚注-->
+              <p class="text-xs text-secondary-text-color">
+                admgo© Copyright 2021. All Rights Reserved.
+              </p>
             </TabsList>
           </div>
           <div class="flex-grow flex-shrink w-[800px]">
