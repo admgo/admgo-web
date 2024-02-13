@@ -15,6 +15,7 @@ import { reactive, shallowRef } from 'vue'
 import Account from './Account.vue'
 import Profile from './Profile.vue'
 import Theme from './Theme.vue'
+import Session from './Session.vue'
 const settingList = reactive([
   {
     name: '用户设置',
@@ -29,6 +30,11 @@ const settingList = reactive([
         name: '个人资料',
         value: 'profile',
         component: shallowRef(Profile),
+      },
+      {
+        name: '会话记录',
+        value: 'session',
+        component: shallowRef(Session),
       },
     ],
   },
