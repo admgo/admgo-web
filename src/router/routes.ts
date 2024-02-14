@@ -1,8 +1,8 @@
 import { RouteRecordRaw } from 'vue-router'
 import login from '@/pages/login.vue'
 import { Layout } from '@/components/layout'
-import workbench from '@/pages/workspace/workbench.vue'
-import dashboard from '@/pages/workspace/dashboard.vue'
+import workbench from '@/pages/workbench/overview.vue'
+import dashboard from '@/pages/workbench/dashboard.vue'
 import NotFound from '@/pages/404.vue'
 
 export const routes: Readonly<RouteRecordRaw[]> = [
@@ -12,19 +12,25 @@ export const routes: Readonly<RouteRecordRaw[]> = [
   { path: '/', redirect: { name: 'overview' } },
   // ===============工作台===============
   {
-    path: '/workbench',
-    name: 'workbench',
+    path: '/',
+    name: 'layout',
     redirect: { name: 'overview' },
     component: Layout,
     children: [
       {
         path: '/workbench/overview',
-        name: 'overview',
+        name: 'workbench-overview',
+        meta: {
+          title: '概览',
+        },
         component: workbench,
       },
       {
         path: '/workbench/dashboard',
-        name: 'dashboard',
+        name: 'workbench-dashboard',
+        meta: {
+          title: '仪表盘',
+        },
         component: dashboard,
       },
     ],
@@ -32,14 +38,11 @@ export const routes: Readonly<RouteRecordRaw[]> = [
   // ===============404===============
   {
     // 404
-    path: '/404',
-    name: '404',
-    component: NotFound,
-  },
-  {
-    // 404
-    path: '/:catchAll(.*)',
+    path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    redirect: { name: '404' },
+    meta: {
+      title: '404',
+    },
+    component: NotFound,
   },
 ]
