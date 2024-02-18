@@ -9,12 +9,12 @@ export const routes: Readonly<RouteRecordRaw[]> = [
   // ===============登录页===============
   { path: '/login', component: login, name: 'login' },
   // ===============/===============
-  { path: '/', redirect: { name: 'overview' } },
+  { path: '/', redirect: { name: 'workbench-overview' } },
   // ===============工作台===============
   {
     path: '/',
     name: 'layout',
-    redirect: { name: 'overview' },
+    redirect: { name: 'workbench-overview' },
     component: Layout,
     children: [
       {
