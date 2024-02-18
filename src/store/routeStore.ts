@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { router } from '@/router'
 import { Layout } from '@/components/layout'
 
-export const useRouteStore = defineStore('store', () => {
+export const useRouteStore = defineStore('route', () => {
   let isAddRoutes = ref(false)
   const syncRoute = () => {
     // 异步获取路由信息
@@ -16,7 +16,7 @@ export const useRouteStore = defineStore('store', () => {
         {
           path: '/cmdb/overview',
           name: 'cmdb-overview',
-          component: () => import('../pages/cmdb/overview.vue'),
+          component: () => import('@/pages/cmdb/overview.vue'),
         },
       ],
     })
