@@ -55,14 +55,14 @@ const push = (herf: any) => {
                 <Button
                   v-if="child.sub == undefined"
                   as="a"
-                  @click="push(child.href)"
                   variant="ghost"
                   :class="
                     cn(
-                      'w-full text-left justify-start px-2',
+                      'w-full text-left justify-start px-2 hover:cursor-pointer',
                       // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
                     )
                   "
+                  @click="push(child.href)"
                 >
                   <div class="flex flex-row justify-center items-center w-full">
                     <AppWindow class="w-3 h-3 flex-shrink-0"></AppWindow>
