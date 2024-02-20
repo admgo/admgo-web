@@ -51,20 +51,21 @@ const settingList = reactive([
   },
 ])
 
-const tabValue = defineModel('account')
+import { useSettingStore } from '@/store/settingStore.ts'
+const setting = useSettingStore()
 </script>
 
 <template>
-  <Dialog>
+  <Dialog :open="setting.isOpen">
     <DialogTrigger>
-      <Button variant="ghost">
+      <Button variant="ghost" @click="setting.open()">
         <Settings class="w-4 h-4"></Settings>
       </Button>
     </DialogTrigger>
     <DialogContent class="max-w-full p-0 m-0 border-0">
       <DialogTitle class="hidden" />
       <DialogDescription class="hidden" />
-      <Tabs v-model="tabValue" default-value="account" class="w-full">
+      <Tabs v-model="setting.tabValue" default-value="account" class="w-full">
         <div class="flex flex-row">
           <div
             class="flex-grow flex-shrink-0 w-[218px] bg-secondary-background"
@@ -98,7 +99,7 @@ const tabValue = defineModel('account')
               </div>
               <!--              脚注-->
               <p class="text-xs text-secondary-text-color">
-                admgo© Copyright 2021. All Rights Reserved.
+                admgo© Copyright 2024. All Rights Reserved.
               </p>
             </TabsList>
           </div>
@@ -124,7 +125,7 @@ const tabValue = defineModel('account')
       <DialogClose
         class="text-secondary-text-color hover:bg-accent absolute top-[40px] right-[90px] inline-flex h-[40px] w-[40px] appearance-none items-center justify-center rounded-full"
       >
-        <div>
+        <div @click="setting.close()">
           <XCircle class="w-[40px] h-[40px]"></XCircle>
         </div>
       </DialogClose>
