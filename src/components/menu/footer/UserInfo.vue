@@ -10,6 +10,9 @@ import {
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { LogOut, UserRoundCog, KeyRound, UserRound } from 'lucide-vue-next'
+import { useSettingStore } from '@/store/settingStore.ts'
+const setting = useSettingStore()
 </script>
 
 <template>
@@ -39,13 +42,34 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
         </div>
       </Button>
     </DropdownMenuTrigger>
-    <DropdownMenuContent>
+    <DropdownMenuContent class="w-56">
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
       <DropdownMenuSeparator />
-      <DropdownMenuItem>Profile</DropdownMenuItem>
-      <DropdownMenuItem>Billing</DropdownMenuItem>
-      <DropdownMenuItem>Team</DropdownMenuItem>
-      <DropdownMenuItem>Subscription</DropdownMenuItem>
+      <DropdownMenuItem class="cursor-pointer" @click="setting.goTo('profile')">
+        <UserRound class="w-4 h-4 ml-1"></UserRound>
+        <span class="ml-2">个人资料</span>
+      </DropdownMenuItem>
+      <DropdownMenuItem class="cursor-pointer" @click="setting.goTo('account')">
+        <KeyRound class="w-4 h-4 ml-1"></KeyRound>
+        <span class="ml-2">修改密码</span>
+      </DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem class="cursor-pointer">
+        <UserRoundCog class="w-4 h-4 ml-1"></UserRoundCog>
+        <span class="ml-2">管理员</span>
+      </DropdownMenuItem>
+      <!--      注销-->
+      <DropdownMenuSeparator />
+      <div class="flex items-center justify-center">
+        <Button
+          variant="outline"
+          class="font-semibold w-5/6 my-0.5 h-8 leading-6"
+        >
+          注销
+          <LogOut class="w-4 h-4 ml-2"></LogOut>
+        </Button>
+      </div>
+      <DropdownMenuSeparator />
     </DropdownMenuContent>
   </DropdownMenu>
 </template>
