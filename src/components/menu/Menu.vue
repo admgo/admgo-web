@@ -18,7 +18,7 @@ const sidebarNavItems: Item[] = [
   {
     name: '概览',
     value: 'overview',
-    href: '/examples/forms/forms',
+    href: '/workbench/overview',
   },
   {
     name: '仪表盘',
@@ -27,12 +27,12 @@ const sidebarNavItems: Item[] = [
       {
         name: '水果盘',
         value: 'fruit',
-        href: '/examples/forms/forms',
+        href: '/workbench/dashboard',
       },
       {
-        name: '蔬菜盘',
+        name: '蔬菜cmdb盘',
         value: 'shucai',
-        href: '/examples/forms/forms',
+        href: '/cmdb/overview',
       },
     ],
   },
@@ -69,6 +69,7 @@ const sidebarNavItems: Item[] = [
     ],
   },
 ]
+console.log('i am in menu')
 </script>
 
 <template>
