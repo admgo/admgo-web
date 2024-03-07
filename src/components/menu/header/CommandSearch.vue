@@ -15,10 +15,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { Input } from '@/components/ui/input'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import Command from '../../ui/command/Command.vue'
-import { Settings } from 'lucide-vue-next'
+import { Search } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 
 const open = ref(false)
@@ -47,9 +46,7 @@ function handleOpenChange() {
             class="bg-primary-background h-full w-full"
             variant="ghost"
             @click="handleOpenChange"
-          >
-            <p class="text-sm text-muted-foreground">搜索或转到...</p>
-          </Button>
+            ><Search class="t  >
         </TooltipTrigger>
         <TooltipContent align="center" side="bottom">
           <p>
