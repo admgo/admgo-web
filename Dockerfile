@@ -1,4 +1,9 @@
-FROM ubuntu:latest
-LABEL authors="kenley"
+FROM nginx:latest
 
-ENTRYPOINT ["top", "-b"]
+LABEL authors="Kenley"
+
+# Copy the dist directory to the nginx directory
+COPY ./dist /var/www/html
+# Use default.conf to override the default configuration
+COPY ./docker/conf.d/*.conf /etc/nginx/conf.d/
+EXPOSE 80
