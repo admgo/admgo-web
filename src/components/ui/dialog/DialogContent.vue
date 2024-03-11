@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {
-  DialogClose,
   DialogContent,
   type DialogContentEmits,
   type DialogContentProps,
@@ -8,7 +7,6 @@ import {
   DialogPortal,
   useEmitAsProps,
 } from 'radix-vue'
-import { Cross2Icon } from '@radix-icons/vue'
 import { cn } from '@/lib/utils'
 
 const props = defineProps<DialogContentProps & { class?: string }>()

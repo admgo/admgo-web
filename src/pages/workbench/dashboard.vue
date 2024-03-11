@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { login } from '@/api/user.api.ts'
 import { Button } from '@/components/ui/button'
-import { useRouteStore } from '@/store/routeStore.ts'
 const c = () => {
   console.log(
     login.post({ username: 'lisi', password: 'lisi' }).then((res) => {

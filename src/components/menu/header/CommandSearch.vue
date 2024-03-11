@@ -46,7 +46,8 @@ function handleOpenChange() {
             class="bg-primary-background h-full w-full"
             variant="ghost"
             @click="handleOpenChange"
-            ><Search class="t  >
+            ><Search class="t" />
+          </Button>
         </TooltipTrigger>
         <TooltipContent align="center" side="bottom">
           <p>
