@@ -6,7 +6,7 @@ import { buttonVariants } from '@/components/ui/button'
 
 <template>
   <div
-    class="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0"
+    class="container relative hidden h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0"
   >
     <a
       href="/examples/authentication"
