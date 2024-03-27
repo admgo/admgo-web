@@ -1,4 +1,4 @@
-name: 'Latest Docker Image - master'
+name: 'Latest Docker Image - main'
 
 on:
   push:
@@ -8,6 +8,17 @@ on:
       - 'tests/**'
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build
+      run: |
+        npm install
   docker:
     runs-on: ubuntu-latest
     steps:
