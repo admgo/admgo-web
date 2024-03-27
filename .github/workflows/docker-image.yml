@@ -31,6 +31,8 @@ jobs:
       with:
         name: dist
         path: dist
+    - name: Ls and Pwd
+      run: ls -alh && pwd
 
   docker:
     needs: build
@@ -62,7 +64,9 @@ jobs:
           context: .
           file: ./Dockerfile  # Assuming Dockerfile is in the root directory
           push: true
-          tags: your_dockerhub_username/vue-app:latest
+          tags: admgo/${{ secrets.DOCKERHUB_REPOSITORY }}:latest
 
       - name: Show image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: Ls and Pwd
+        run: ls -alh && pwd
