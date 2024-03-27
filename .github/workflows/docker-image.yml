@@ -19,7 +19,7 @@ jobs:
       with:
         node-version: 18
     - name: Ls
-        run: ls -alh
+      run: ls -alh
     - name: Build
       run: |
         npm install
