@@ -8,26 +8,19 @@ on:
       - 'tests/**'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Use Node.js 18
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-    - name: Ls
-      run: ls -alh
-    - name: Build
-      run: |
-        npm install
 
   docker:
-    needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Ls
+        run: ls -alh
+      - name: Build
+        run: |
+          npm install
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
@@ -37,8 +30,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Ls
-        run: ls -alh
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v5
