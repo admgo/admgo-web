@@ -1,8 +1,8 @@
-name: 'Build and Push to Docker Hub'
+name: 'Build and Push to Docker Hub with Tag'
 
 on:
   push:
-    tags:        
+    tags:
       - 'v[1-9]?[0-9]?.[0-9]+.[0-9]+'
       - 'v[1-9]?[0-9]?.[0-9]+.[0-9]+-beta.[1-9]?[0-9]?'
       - 'v[1-9]?[0-9]?.[0-9]+.[0-9]+-alpha.[1-9]?[0-9]?'
@@ -39,7 +39,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
+      - name: Get current git tag
+        id: tag
+        uses: devops-actions/action-get-tag@v1.0.1
+        with:
+            strip_v: true # Optional: Remove 'v' character from version
       - name: Download dist folder
         uses: actions/download-artifact@v2
         with:
@@ -63,7 +67,7 @@ jobs:
           file: ./Dockerfile  # Assuming Dockerfile is in the root directory
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: admgo/${{ secrets.DOCKERHUB_REPOSITORY }}:latest
+          tags: admgo/${{ secrets.DOCKERHUB_REPOSITORY }}:${{steps.tag.outputs.tag}}
 
       - name: Show image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
