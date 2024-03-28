@@ -2,10 +2,8 @@ name: 'Build and Push Vue App to Docker Hub'
 
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - 'tests/**'
+    tags:        
+      - ^v(0|[1-9]\d?)(\.(0|[1-9]\d?)){2}(-(beta\.\d+|alpha\.\d+|rc\.\d+))?$
 
 jobs:
   build:
