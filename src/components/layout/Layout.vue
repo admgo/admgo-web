@@ -11,7 +11,7 @@ import { Menu } from '@/components/menu'
           <Menu />
         </div>
         <!--        主体-->
-        <div class="flex-grow h-full bg-primary-background">
+        <div class="flex-grow h-full bg-primary-background overflow-auto">
           <router-view />
         </div>
       </div>

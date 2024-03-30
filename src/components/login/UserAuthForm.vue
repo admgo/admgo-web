@@ -5,15 +5,14 @@ import { RefreshCw } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 const isLoading = ref(false)
 
 const username = ref()
 const password = ref()
 
 async function onSubmit(event: Event) {
-  console.log(username)
-  console.log(password)
+  console.log(username.value)
+  console.log(password.value)
   event.preventDefault()
   isLoading.value = true
 
@@ -28,26 +27,25 @@ async function onSubmit(event: Event) {
     <form @submit="onSubmit">
       <div class="grid gap-2">
         <div class="grid gap-1">
-          <Label class="sr-only" for="email"> Email </Label>
           <Input
-            id="email"
+            id="username"
             v-model="username"
             placeholder="用户名"
             type="text"
-            auto-capitalize="none"
-            auto-complete="email"
-            auto-correct="off"
+            autocapitalize="none"
+            autocomplete="on"
+            autocorrect="off"
             :disabled="isLoading"
           />
           <Input
-            id="email"
+            id="password"
             v-model="password"
             class="my-2"
             placeholder="密码"
-            type="email"
-            auto-capitalize="none"
-            auto-complete="email"
-            auto-correct="off"
+            type="password"
+            autocapitalize="none"
+            autocomplete="on"
+            autocorrect="off"
             :disabled="isLoading"
           />
         </div>
@@ -65,8 +63,39 @@ async function onSubmit(event: Event) {
         <span class="bg-background px-2 text-muted-foreground"> 或使用 </span>
       </div>
     </div>
-    <Button variant="outline" type="button" :disabled="isLoading">
-      LDAP
-    </Button>
+    <div class="h-40 overflow-auto w-full">
+      <Button
+        class="w-full mb-2"
+        variant="outline"
+        type="button"
+        :disabled="isLoading"
+      >
+        LDAP
+      </Button>
+      <Button
+        class="w-full mb-2"
+        variant="outline"
+        type="button"
+        :disabled="isLoading"
+      >
+        LDAP
+      </Button>
+      <Button
+        class="w-full mb-2"
+        variant="outline"
+        type="button"
+        :disabled="isLoading"
+      >
+        SSO
+      </Button>
+      <Button
+        class="w-full mb-2"
+        variant="outline"
+        type="button"
+        :disabled="isLoading"
+      >
+        Gitlab
+      </Button>
+    </div>
   </div>
 </template>
