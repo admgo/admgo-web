@@ -23,19 +23,29 @@ module.exports = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        background: {
+          DEFAULT: 'hsl(var(--background))',
+          'level-1': 'hsl(var(--background-level-1))',
+          'level-2': 'hsl(var(--background-level-2))',
+          'level-3': 'hsl(var(--background-level-3))',
+          'level-4': 'hsl(var(--background-level-4))',
+        },
+        foreground: {
+          DEFAULT: 'hsl(var(--foreground))',
+          'level-1': 'hsl(var(--foreground-level-1))',
+          'level-2': 'hsl(var(--foreground-level-2))',
+          'level-3': 'hsl(var(--foreground-level-3))',
+          'level-4': 'hsl(var(--foreground-level-4))',
+        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
           background: 'hsl(var(--primary-background))',
-          'text-color': 'hsl(var(--primary-text-color))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
           background: 'hsl(var(--secondary-background))',
-          'text-color': 'hsl(var(--secondary-text-color))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
@@ -48,11 +58,9 @@ module.exports = {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
-          'text-color': 'hsl(var(--accent-text-color))',
         },
         active: {
           DEFAULT: 'hsl(var(--active))',
-          'text-color': 'hsl(var(--active-text-color))',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
