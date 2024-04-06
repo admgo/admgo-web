@@ -1,11 +1,9 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  $END$
+  <span class="font-semibold text-sm text-background-level-1">
+    <slot />
+  </span>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
