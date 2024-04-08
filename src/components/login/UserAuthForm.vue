@@ -5,20 +5,30 @@ import { RefreshCw } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { login } from '@/api/user.api.ts'
+import { useUserStore } from '@/store/userStore.ts'
+import { router } from '@/router'
+
 const isLoading = ref(false)
 
 const username = ref()
 const password = ref()
 
 async function onSubmit(event: Event) {
-  console.log(username.value)
-  console.log(password.value)
-  event.preventDefault()
   isLoading.value = true
+  login
+    .post({ username: username.value, password: password.value })
+    .then((res) => {
+      if (res.data.code === 0) {
+        // useUserStore().isAuthenticated = true
+        console.log(useUserStore().isAuthenticated)
+      } else {
+        console.log(res.data)
+      }
 
-  setTimeout(() => {
-    isLoading.value = false
-  }, 3000)
+      isLoading.value = false
+    })
+  event.preventDefault()
 }
 </script>
 

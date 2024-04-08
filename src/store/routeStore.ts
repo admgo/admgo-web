@@ -2,9 +2,9 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { router } from '@/router'
 import { Layout } from '@/components/layout'
-
 export const useRouteStore = defineStore('route', () => {
-  let isAddRoutes = ref(false)
+  // const isLoading = ref(false)
+  const isAddRoutes = ref(false)
   const syncRoute = () => {
     // 异步获取路由信息
     router.addRoute({

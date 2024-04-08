@@ -1,221 +1,99 @@
 <script setup lang="ts">
 import { cn } from '@/lib/utils.ts'
-import { Button } from '@/components/ui/button'
+import { type HTMLAttributes, ref } from 'vue'
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip'
-import { Separator } from '@/components/ui/separator'
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from '@/components/ui/menubar'
 import { ChevronRight, AppWindow } from 'lucide-vue-next'
-import { router } from '@/router'
-interface Item {
-  name: string
-  value: string
-  href?: string
-  sub?: Item[]
-  child?: Item[]
-}
+import { Separator } from '@/components/ui/separator'
 const props = defineProps<{
-  items: Item[]
-  title: string
+  class?: HTMLAttributes['class']
 }>()
-const push = (herf: any) => {
-  router.push(herf)
+import { useMenuStore } from '@/store/menuStore.ts'
+const { menu } = useMenuStore()
+
+const click = (i: string) => {
+  currentMenu.value = i
+  currentCheckboxItem.value = ''
 }
+const select = (i: string, ii: string) => {
+  currentMenu.value = i
+  currentCheckboxItem.value = ii
+}
+
+const currentMenu = ref('')
+const currentCheckboxItem = ref('')
 </script>
 
 <template>
-  <div class="mx-2">
-    <!--    标题-->
-    <h1 class="h-10 leading-10 ml-3 font-semibold text-sm">
-      {{ props.title }}
-    </h1>
-    <!--    主体-->
-    <nav
-      class="w-full flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1 h-full"
-    >
-      <div class="h-full">
-        <div>
-          <div v-for="item in props.items" :key="item.value" class="my-1">
-            <!--                  判断是否是分组的菜单-->
-            <!--                  是分组的菜单-->
-            <div v-if="item.child != undefined">
-              <!--                    分割线-->
-              <Separator class="my-4" />
-              <!--                    组标题-->
-              <h1 class="ml-4 text-xs my-2 font-semibold">
-                {{ item.name }}
-              </h1>
-              <!--                    按钮-->
-              <div v-for="child in item.child" :key="child.value">
-                <!--                      判断是否有二级菜单-->
-                <!--                      无二级菜单-->
-                <Button
-                  v-if="child.sub == undefined"
-                  as="a"
-                  variant="ghost"
-                  :class="
-                    cn(
-                      'w-full text-left justify-start px-2 hover:cursor-pointer',
-                      // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
-                    )
-                  "
-                  @click="push(child.href)"
-                >
-                  <div class="flex flex-row justify-center items-center w-full">
-                    <AppWindow class="w-3 h-3 flex-shrink-0"></AppWindow>
-                    <div class="flex-grow ml-1.5 overflow-hidden">
-                      {{ child.name }}
-                    </div>
-                  </div>
-                </Button>
-                <!--                      有二级菜单-->
-                <TooltipProvider
-                  :delay-duration="7"
-                  v-if="child.sub != undefined"
-                >
-                  <Tooltip>
-                    <TooltipTrigger as-child>
-                      <Button
-                        variant="ghost"
-                        :class="
-                          cn(
-                            'w-full text-left justify-start px-2',
-                            // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
-                          )
-                        "
-                      >
-                        <div
-                          class="flex flex-row justify-center items-center w-full"
-                        >
-                          <AppWindow class="w-3 h-3 flex-shrink-0"></AppWindow>
-                          <div class="flex-grow ml-1.5 overflow-hidden">
-                            {{ child.name }}
-                          </div>
-                          <ChevronRight
-                            class="w-4 h-4 flex-shrink-0"
-                          ></ChevronRight>
-                        </div>
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent class="bg-background border-2" side="right">
-                      <div class="w-44 text-black dark:text-white">
-                        <Button
-                          v-for="s in child.sub"
-                          :key="s.value"
-                          as="a"
-                          @click="push(s.href)"
-                          variant="ghost"
-                          :class="
-                            cn(
-                              'w-full text-left justify-start px-2',
-                              // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
-                            )
-                          "
-                        >
-                          <div
-                            class="flex flex-row justify-center items-center w-full"
-                          >
-                            <AppWindow
-                              class="w-3 h-3 flex-shrink-0"
-                            ></AppWindow>
-                            <div class="flex-grow ml-1.5 overflow-hidden">
-                              {{ child.name }}
-                            </div>
-                          </div>
-                        </Button>
-                      </div>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </div>
-            </div>
-            <!--                  不是分组的菜单-->
-            <div v-if="item.child == undefined">
-              <!--                    按钮-->
-              <!--                      判断是否有二级菜单-->
-              <!--                      无二级菜单-->
-              <Button
-                v-if="item.sub == undefined"
-                as="a"
-                @click="push(item.href)"
-                variant="ghost"
-                :class="
-                  cn(
-                    'w-full text-left justify-start px-2',
-                    // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
-                  )
-                "
-              >
-                <div class="flex flex-row justify-center items-center w-full">
-                  <AppWindow class="w-3 h-3 flex-shrink-0"></AppWindow>
-                  <div class="flex-grow ml-1.5 overflow-hidden">
-                    {{ item.name }}
-                  </div>
-                </div>
-              </Button>
-              <!--                      有二级菜单-->
-              <TooltipProvider v-if="item.sub != undefined" :delay-duration="7">
-                <Tooltip>
-                  <TooltipTrigger as-child>
-                    <Button
-                      variant="ghost"
-                      :class="
-                        cn(
-                          'w-full text-left justify-start px-2',
-                          // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
-                        )
-                      "
-                    >
-                      <div
-                        class="flex flex-row justify-center items-center w-full"
-                      >
-                        <AppWindow class="w-3 h-3 flex-shrink-0"></AppWindow>
-                        <div class="flex-grow ml-1.5 overflow-hidden">
-                          {{ item.name }}
-                        </div>
-                        <ChevronRight
-                          class="w-4 h-4 flex-shrink-0"
-                        ></ChevronRight>
-                      </div>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent class="bg-background border-2" side="right">
-                    <div class="w-44 text-black dark:text-white">
-                      <Button
-                        v-for="s in item.sub"
-                        :key="s.value"
-                        as="a"
-                        @click="push(s.href)"
-                        variant="ghost"
-                        :class="
-                          cn(
-                            'w-full text-left justify-start px-2',
-                            // $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
-                          )
-                        "
-                      >
-                        <div
-                          class="flex flex-row justify-center items-center w-full"
-                        >
-                          <AppWindow class="w-3 h-3 flex-shrink-0"></AppWindow>
-                          <div class="flex-grow ml-1.5 overflow-hidden">
-                            {{ s.name }}
-                          </div>
-                        </div>
-                      </Button>
-                    </div>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
+  <Menubar
+    :class="
+      cn(
+        'p-2 h-full border-0 bg-inherit rounded-none flex-col w-48 space-x-0 space-y-2 items-start shadow-xl',
+        props.class,
+      )
+    "
+  >
+    <MenubarMenu v-for="m in menu.menu" :key="m.value" :value="m.value">
+      <button
+        v-if="m.type == 'item'"
+        id="auth"
+        :data-select="currentMenu == m.value ? 'true' : 'false'"
+        type="button"
+        role="menuitem"
+        aria-haspopup="menu"
+        aria-expanded="false"
+        data-state="closed"
+        data-value="auth"
+        data-radix-vue-collection-item=""
+        tabindex="-1"
+        data-orientation="horizontal"
+        data-active="true"
+        class="flex cursor-default items-center rounded-sm px-3 py-1 text-sm font-medium outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground w-44 h-9 data-[select=true]:bg-amber-300 hover:cursor-pointer hover:bg-accent hover:text-accent-foreground"
+        @click="click(m.value)"
+      >
+        {{ m.name }}
+      </button>
+      <component :is="Separator" v-if="m.type == 'separator'" />
+      <div v-if="m.type == 'group'">
+        <MenubarTrigger
+          :data-select="currentMenu == m.value ? 'true' : 'false'"
+          class="w-44 h-9 data-[select=true]:bg-accent hover:cursor-pointer hover:bg-accent hover:text-accent-foreground"
+        >
+          {{ m.name }}
+          <MenubarShortcut> <ChevronRight class="h-4 w-4" /></MenubarShortcut>
+        </MenubarTrigger>
+        <MenubarContent side="right">
+          <div v-for="i in m.content" :key="i.value">
+            <!--          MenubarSeparator-->
+            <component :is="MenubarSeparator" v-if="i.type == 'separator'" />
+            <!--          MenubarCheckboxItem-->
+            <component
+              :is="MenubarCheckboxItem"
+              v-if="i.type == 'item'"
+              class="hover:cursor-pointer"
+              :checked="currentCheckboxItem == i.value"
+              @select="select(m.value, i.value)"
+            >
+              {{ i.name }} <MenubarShortcut>{{ i.shortcut }}</MenubarShortcut>
+            </component>
           </div>
-        </div>
+        </MenubarContent>
       </div>
-    </nav>
-  </div>
+    </MenubarMenu>
+  </Menubar>
 </template>
 
 <style scoped></style>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { UserAuthForm } from '@/components/login'
-import { cn } from '@/lib/utils'
+import { UserAuthForm } from '@/components/login/index.ts'
+import { cn } from '@/lib/utils.ts'
 import { buttonVariants } from '@/components/ui/button'
 </script>
 
