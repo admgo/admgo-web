@@ -1,27 +1,36 @@
 <script setup lang="ts">
 import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-import { BreadcrumbItem } from '@/components/ui/breadcrumb'
-import { ChevronDown } from 'lucide-vue-next'
+import { ChevronRight, Slash } from 'lucide-vue-next'
 </script>
 
 <template>
-  <BreadcrumbItem>
-    <DropdownMenu>
-      <DropdownMenuTrigger class="flex items-center gap-1">
-        Components
-        <ChevronDown />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start">
-        <DropdownMenuItem>Documentation</DropdownMenuItem>
-        <DropdownMenuItem>Themes</DropdownMenuItem>
-        <DropdownMenuItem>GitHub</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  </BreadcrumbItem>
+  <Breadcrumb>
+    <BreadcrumbList class="sm:gap-1 text-xs">
+      <BreadcrumbItem>
+        <BreadcrumbLink href="/"> Home </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator class="[&>svg]:size-2.5">
+        <ChevronRight />
+      </BreadcrumbSeparator>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="/components"> Components </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator class="[&>svg]:size-2.5">
+        <ChevronRight />
+      </BreadcrumbSeparator>
+    </BreadcrumbList>
+  </Breadcrumb>
 </template>
