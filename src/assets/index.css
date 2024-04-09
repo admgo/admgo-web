@@ -7,15 +7,15 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --background-level-1: 0 0% 90%;
-    --background-level-2: 0 0% 90%;
-    --background-level-3: 0 0% 80%;
-    --background-level-4: 0 0% 70%;
+    --background-level-1: 0 0% 95%;
+    --background-level-2: 0 0% 91%;
+    --background-level-3: 0 0% 87%;
+    --background-level-4: 0 0% 83%;
     --foreground: 222.2 84% 4.9%;
-    --foreground-level-1: 142.1 76.2% 36.3%;
-    --foreground-level-2: 100 0% 90%;
-    --foreground-level-3: 100 0% 80%;
-    --foreground-level-4: 100 0% 70%;
+    --foreground-level-1: 0 0% 19%;
+    --foreground-level-2: 0 0% 16%;
+    --foreground-level-3: 0 0% 12%;
+    --foreground-level-4: 0 0% 9%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -23,8 +23,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 221.2 83.2% 53.3%;
+    --success: 160 84% 39%;
+    --warning: 221.2 83.2% 53.3%;
+
+    --primary: 217, 100%, 43%;
+    --primary-level-1: 222, 90%,58%;
+    --primary-level-2: 223, 100%, 69%;
+    --primary-level-3: 225, 100%, 78%;
+    --primary-level-4: 227, 100%, 93%;
     --primary-foreground: 210 40% 98%;
+    --primary-background: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -46,10 +54,10 @@
 
   .dark {
     --background:222.2 84% 4.9%;
-    --background-level-1: 0 0% 10%;
-    --background-level-2: 0 0% 90%;
-    --background-level-3: 0 0% 80%;
-    --background-level-4: 0 0% 70%;
+    --background-level-1: 222.2 84% 3.9%;
+    --background-level-2: 222.2 84% 2.9%;
+    --background-level-3: 222.2 84% 1.9%;
+    --background-level-4: 222.2 84% 0.9%;
     --foreground:210 40% 98%;
 
     --card:222.2 84% 4.9%;

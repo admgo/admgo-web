@@ -39,6 +39,10 @@ module.exports = {
         },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
+          'level-1': 'hsl(var(--primary-level-1))',
+          'level-2': 'hsl(var(--primary-level-2))',
+          'level-3': 'hsl(var(--primary-level-3))',
+          'level-4': 'hsl(var(--primary-level-4))',
           foreground: 'hsl(var(--primary-foreground))',
           background: 'hsl(var(--primary-background))',
         },
