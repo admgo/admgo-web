@@ -39,6 +39,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: echo env
+        run: |
+          go version
+          python -V
+          python3 -V
+          node -v
       - name: Get current git tag
         id: tag
         uses: devops-actions/action-get-tag@v1.0.1
